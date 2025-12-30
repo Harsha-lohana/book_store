@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Magic Book Store | Complete Stationery Collection Bhavnagar</title>
+    <meta name="description" content="Browse our complete collection of stationery, books, invisible ink pens, art supplies, student essentials, and magical items at Magic Book Store Bhavnagar.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Color Palette */
+            --cream: #FAF7F2;
+            --pencil-yellow: #FFE566;
+            --ink-blue: #2A3B8F;
+            --soft-lavender: #B19CD9;
+            --paper-brown: #E8DFCA;
+            --magic-gold: #FFD700;
+            --success-green: #25D366;
+            --dark-bg: #1a1a1a;
+            
+            /* Fonts */
+            --heading-font: 'Playfair Display', serif;
+            --subheading-font: 'Dancing Script', cursive;
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            color: var(--ink-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--soft-lavender);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--ink-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--soft-lavender);
+        }
+
+        .nav-links a.active {
+            color: var(--soft-lavender);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--soft-lavender);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--ink-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .products-hero {
+            background: linear-gradient(rgba(106, 17, 203, 0.85), rgba(37, 117, 252, 0.85)), 
+                        url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 70px;
+        }
+
+        .products-hero h1 {
+            font-family: var(--heading-font);
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .products-hero p {
+            font-family: var(--subheading-font);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .floating-item {
+            position: absolute;
+            opacity: 0.8;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+            font-size: 2.5rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background-color: var(--paper-brown);
+            padding: 30px 0;
+            position: sticky;
+            top: 70px;
+            z-index: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 2px solid var(--soft-lavender);
+            border-radius: 30px;
+            font-family: var(--body-font);
+            font-weight: 500;
+            color: var(--ink-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--soft-lavender);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(177, 156, 217, 0.3);
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-size: 2.8rem;
+            color: var(--ink-blue);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pencil-yellow), var(--soft-lavender));
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--pencil-yellow);
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .magic-badge {
+            background-color: var(--soft-lavender);
+            color: white;
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: var(--paper-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--ink-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                        rgba(255, 229, 102, 0.1), 
+                        rgba(177, 156, 217, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 1;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-category {
+            display: inline-block;
+            background-color: rgba(177, 156, 217, 0.1);
+            color: var(--ink-blue);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-family: var(--body-font);
+            font-size: 1.5rem;
+            color: var(--ink-blue);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background-color: rgba(177, 156, 217, 0.1);
+            color: var(--ink-blue);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .price {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            color: var(--ink-blue);
+            font-weight: 700;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .order-btn {
+            background-color: var(--ink-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: var(--body-font);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .order-btn:hover {
+            background-color: #1e2a6c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(42, 59, 143, 0.3);
+        }
+
+        .order-btn.whatsapp {
+            background-color: var(--success-green);
+        }
+
+        .order-btn.whatsapp:hover {
+            background-color: #1da851;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 60px;
+        }
+
+        .category-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Services Banner */
+        .services-banner {
+            background-color: var(--ink-blue);
+            color: white;
+            padding: 40px 0;
+            margin: 60px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-item {
+            padding: 20px;
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--pencil-yellow);
+        }
+
+        .service-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Visit Store Section */
+        .visit-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .visit-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .store-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .store-info h2 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            color: var(--ink-blue);
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-item i {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--soft-lavender);
+            font-size: 1.2rem;
+        }
+
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--ink-blue), var(--soft-lavender));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: var(--heading-font);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--success-green);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-call {
+            background-color: white;
+            color: var(--ink-blue);
+        }
+
+        .btn-call:hover {
+            background-color: var(--pencil-yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 229, 102, 0.3);
+        }
+
+        .btn-home {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-home:hover {
+            background-color: white;
+            color: var(--ink-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-family: var(--subheading-font);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--soft-lavender);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .products-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-hero p {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--cream);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .visit-container {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation Delays */
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="i.html" class="logo">
+                <i class="fas fa-book"></i>
+                Magic Book Store
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="i.html">Home</a>
+                <a href="product.html" class="active">Products</a>
+                <a href="i.html#services">Services</a>
+                <a href="i.html#reviews">Reviews</a>
+                <a href="#visit">Visit Store</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="products-hero">
+        <div class="floating-item" style="top:20%; left:10%;">✏️</div>
+        <div class="floating-item" style="top:40%; right:15%;">📚</div>
+        <div class="floating-item" style="bottom:30%; left:15%;">🖋️</div>
+        
+        <div class="container">
+            <h1>Our Magical Collection</h1>
+            <p>Everything You Need for Study & Creativity</p>
+            <a href="https://wa.me/918140408456" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large"></i> All Products
+                </button>
+                <button class="filter-btn" data-filter="pens">
+                    <i class="fas fa-pen"></i> Pens & Writing
+                </button>
+                <button class="filter-btn" data-filter="notebooks">
+                    <i class="fas fa-book"></i> Notebooks
+                </button>
+                <button class="filter-btn" data-filter="books">
+                    <i class="fas fa-book-open"></i> Books
+                </button>
+                <button class="filter-btn" data-filter="art">
+                    <i class="fas fa-palette"></i> Art Supplies
+                </button>
+                <button class="filter-btn" data-filter="magic">
+                    <i class="fas fa-magic"></i> Magic Collection
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <!-- All Products Grid -->
+            <div class="category-section">
+                <h2 class="section-title">Complete Collection</h2>
+                <p class="category-intro">Explore our wide range of stationery, books, and creative supplies. From everyday essentials to magical surprises, we have everything students need!</p>
+                
+                <div class="products-grid" id="productsGrid">
+                    <!-- Product 1 - Invisible Ink Pen -->
+                    <div class="product-card" data-category="pens magic">
+                        <div class="product-badge magic-badge">Magical!</div>
+                        <div class="product-image">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Magic Collection</span>
+                            <h3 class="product-title">Invisible Ink Pen Set</h3>
+                            <p class="product-description">Set of 3 invisible ink pens with UV light. Write secret messages that only glow under UV light!</p>
+                            <div class="product-features">
+                                <span class="feature-tag">Secret Writing</span>
+                                <span class="feature-tag">UV Light Included</span>
+                                <span class="feature-tag">Fun Learning</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹299</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Invisible Ink Pen Set')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 - Gel Pens -->
+                    <div class="product-card" data-category="pens">
+                        <div class="product-badge">Popular</div>
+                        <div class="product-image">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Writing</span>
+                            <h3 class="product-title">Premium Gel Pens Pack</h3>
+                            <p class="product-description">12 vibrant gel pens with smooth 0.7mm tip. Perfect for notes, journals, and creative writing.</p>
+                            <div class="product-features">
+                                <span class="feature-tag">12 Colors</span>
+                                <span class="feature-tag">Smooth Writing</span>
+                                <span class="feature-tag">Quick Dry</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹180</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Premium Gel Pens Pack')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 - Notebooks -->
+                    <div class="product-card" data-category="notebooks">
+                        <div class="product-badge">Student Favorite</div>
+                        <div class="product-image">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Notebooks</span>
+                            <h3 class="product-title">Spiral Bound Notebook Set</h3>
+                            <p class="product-description">Set of 5 spiral notebooks with 200 pages each. Durable cover and smooth writing paper.</p>
+                            <div class="product-features">
+                                <span class="feature-tag">200 Pages Each</span>
+                                <span class="feature-tag">Spiral Binding</span>
+                                <span class="feature-tag">5 Subjects</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹350</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Spiral Bound Notebook Set')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 - Watercolor -->
+                    <div class="product-card" data-category="art">
+                        <div class="product-badge">Artist Choice</div>
+                        <div class="product-image">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Art Supplies</span>
+                            <h3 class="product-title">Complete Watercolor Set</h3>
+                            <p class="product-description">24 color watercolor paints with 3 brushes, mixing palette, and watercolor paper.</p>
+                            <div class="product-features">
+                                <span class="feature-tag">24 Colors</span>
+                                <span class="feature-tag">3 Brushes</span>
+                                <span class="feature-tag">Paper Included</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹450</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Complete Watercolor Set')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 - Reference Books -->
+                    <div class="product-card" data-category="books">
+                        <div class="product-image">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Books</span>
+                            <h3 class="product-title">Student Reference Books</h3>
+                            <p class="product-description">Essential reference books for school students including dictionary, atlas, and encyclopedia.</p>
+                            <div class="product-features">
+                                <span class="feature-tag">Educational</span>
+                                <span class="feature-tag">Illustrated</span>
+                                <span class="feature-tag">Curriculum Based</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">From ₹250</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Student Reference Books')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 - Gift Pack -->
+                    <div class="product-card" data-category="magic">
+                        <div class="product-badge magic-badge">Perfect Gift</div>
+                        <div class="product-image">
+                            <i class="fas fa-gifts"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Gift Sets</span>
+                            <h3 class="product-title">Back to School Gift Pack</h3>
+                            <p class="product-description">Complete stationery set with pens, notebooks, geometry box, and stickers. Free gift wrapping!</p>
+                            <div class="product-features">
+                                <span class="feature-tag">15+ Items</span>
+                                <span class="feature-tag">Gift Wrapped</span>
+                                <span class="feature-tag">Student Essential</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹599</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Back to School Gift Pack')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 - Highlighters -->
+                    <div class="product-card" data-category="pens">
+                        <div class="product-image">
+                            <i class="fas fa-highlighter"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Writing</span>
+                            <h3 class="product-title">Pastel Highlighters Set</h3>
+                            <p class="product-description">Set of 6 soft pastel highlighters for gentle, aesthetic note-taking and studying.</p>
+                            <div class="product-features">
+                                <span class="feature-tag">6 Colors</span>
+                                <span class="feature-tag">Pastel Shades</span>
+                                <span class="feature-tag">Dual Tips</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹150</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Pastel Highlighters Set')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 - Glow Art -->
+                    <div class="product-card" data-category="magic art">
+                        <div class="product-badge magic-badge">New</div>
+                        <div class="product-image">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">Magic Collection</span>
+                            <h3 class="product-title">Glow in the Dark Art Set</h3>
+                            <p class="product-description">Create magical art that glows in the dark! Includes paints, markers, and special paper.</p>
+                            <div class="product-features">
+                                <span class="feature-tag">Glow Effect</span>
+                                <span class="feature-tag">Complete Kit</span>
+                                <span class="feature-tag">Fun Activity</span>
+                            </div>
+                            <div class="price-section">
+                                <div class="price">₹380</div>
+                                <button class="order-btn whatsapp" onclick="orderProduct('Glow in the Dark Art Set')">
+                                    <i class="fab fa-whatsapp"></i> Order Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Banner -->
+    <section class="services-banner">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-print"></i>
+                    <h3>Xerox & Printing</h3>
+                    <p>PDF supported printing services</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-gift"></i>
+                    <h3>Free Gift Wrapping</h3>
+                    <p>With cute stickers for all occasions</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-female"></i>
+                    <h3>Women-Owned</h3>
+                    <p>Local business supporting community</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-rupee-sign"></i>
+                    <h3>Affordable Pricing</h3>
+                    <p>Student-friendly prices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Store Section -->
+    <section class="visit-section" id="visit">
+        <div class="container">
+            <div class="visit-container">
+                <div class="store-info">
+                    <h2>Visit Our Store</h2>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Address</h3>
+                        <p>Near 998, New Sindhunagar,<br>Sardar Nagar, Bhavnagar – 364002</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+918140408456" style="color:inherit;">+91 81404 08456</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Timings</h3>
+                        <p>Mon–Sat: 10 AM – 9 PM<br>Sun: 10 AM – 7 PM</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-credit-card"></i>
+                        <h3>Payments</h3>
+                        <p>Cash & Google Pay accepted</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://maps.app.goo.gl/RS7hcxVxZVNEd9bNA" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Something Special?</h2>
+                <p>Can't find what you're looking for? We offer custom orders and special requests! Contact us for personalized stationery, bulk orders, or unique requirements.</p>
+                
+                <div class="cta-buttons">
+                    <a href="i.html" class="btn btn-home">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="tel:+918140408456" class="btn btn-call">
+                        <i class="fas fa-phone"></i> Call to Inquire
+                    </a>
+                    <a href="https://wa.me/918140408456" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp for Orders
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-quote">"Every great journey begins with a pen and a book."</div>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/magic_book_store13/" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/918140408456" target="_blank" class="social-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://maps.app.goo.gl/RS7hcxVxZVNEd9bNA" target="_blank" class="social-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+
+    <!-- Google (Search / Business Profile) -->
+    <a href="https://www.google.com/search?q=magic+book+store+bhavnagar" target="_blank" class="social-link">
+        <i class="fab fa-google"></i>
+    </a>
+
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Magic Book Store, Bhavnagar. All rights reserved.</p>
+                <p>One stop solution for students in Bhavnagar</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Product Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Filter products
+                productCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        if (categories.includes(filterValue)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(30px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        });
+
+        // Order product function
+        function orderProduct(productName) {
+            const message = `Hello Magic Book Store! I would like to order: ${productName}. Please let me know about availability and delivery options.`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/918140408456?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Add click event to all order buttons
+        document.querySelectorAll('.order-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('.product-title').textContent;
+                orderProduct(productName);
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe product cards for animation
+        productCards.forEach(card => {
+            card.style.animationPlayState = 'paused';
+            observer.observe(card);
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
